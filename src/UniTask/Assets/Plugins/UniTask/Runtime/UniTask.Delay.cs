@@ -126,12 +126,12 @@ namespace Cysharp.Threading.Tasks
 
 		public static UniTask WaitForSeconds(float duration, bool ignoreTimeScale = false, PlayerLoopTiming delayTiming = PlayerLoopTiming.Update, CancellationToken cancellationToken = default(CancellationToken), bool cancelImmediately = false)
 		{
-			return Delay(Mathf.RoundToInt(1000 * duration), ignoreTimeScale, delayTiming, cancellationToken, cancelImmediately);
+			return Delay(Mathf.RoundToInt(1000 * Mathf.Max(duration, 0)), ignoreTimeScale, delayTiming, cancellationToken, cancelImmediately);
 		}
 
 		public static UniTask WaitForSeconds(int duration, bool ignoreTimeScale = false, PlayerLoopTiming delayTiming = PlayerLoopTiming.Update, CancellationToken cancellationToken = default(CancellationToken), bool cancelImmediately = false)
 		{
-			return Delay(1000 * duration, ignoreTimeScale, delayTiming, cancellationToken, cancelImmediately);
+			return Delay(1000 * Mathf.Max(duration, 0), ignoreTimeScale, delayTiming, cancellationToken, cancelImmediately);
 		}
 
 		public static UniTask DelayFrame(int delayFrameCount, PlayerLoopTiming delayTiming = PlayerLoopTiming.Update, CancellationToken cancellationToken = default(CancellationToken), bool cancelImmediately = false)
